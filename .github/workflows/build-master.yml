@@ -5,8 +5,6 @@ name: 'Build on Master'
 on:
   push:
     branches: [ master ]
-    paths:
-      - 'Dockerfile'
 
 jobs:
   build-and-push-image:
