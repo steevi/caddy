@@ -1,5 +1,5 @@
 # desired Caddy version
-ARG VERSION=2.4.6
+ARG VERSION
 
 ###########
 # builder #
