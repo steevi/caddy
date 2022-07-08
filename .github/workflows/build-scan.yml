@@ -22,5 +22,18 @@ jobs:
       - name: Build container image
         run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${GITHUB_SHA} .
 
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'steevi/caddy-cloudflare:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
       # - name: Build and push container image
       #   run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${CADDY_VERSION} . && docker push steevi/caddy-cloudflare:${CADDY_VERSION}
