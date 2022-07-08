@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }} 
 
       - name: Build container image
-        run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${GITHUB_REF} .
+        run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${GITHUB_SHA} .
 
       # - name: Build and push container image
       #   run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${CADDY_VERSION} . && docker push steevi/caddy-cloudflare:${CADDY_VERSION}
