@@ -1,8 +1,9 @@
-name: 'Build on Master'
+name: 'Build and Scan docker image'
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - '*'
 
 jobs:
   build-and-push-image:
@@ -18,5 +19,5 @@ jobs:
           username: steevi
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push container image
-        run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${CADDY_VERSION} . && docker push steevi/caddy-cloudflare:${CADDY_VERSION}
+      # - name: Build and push container image
+      #   run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${CADDY_VERSION} . && docker push steevi/caddy-cloudflare:${CADDY_VERSION}
