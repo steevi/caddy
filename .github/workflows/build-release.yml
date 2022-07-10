@@ -28,11 +28,10 @@ jobs:
       - name: read environment file
         run: cat .env >>${GITHUB_ENV}          
       
-      - name: Build and export to Docker
+      - name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
         with:
           push: true
-          load: true # Export to Docker Engine rather than pushing to a registry
           tags: steevi/caddy-cloudflare:${{ env.caddy_version }}
           build-args: |
             VERSION=${{ env.caddy_version }}
