@@ -35,7 +35,7 @@ jobs:
           load: true # Export to Docker Engine rather than pushing to a registry
           tags: steevi/caddy-cloudflare:${{ env.caddy_version }}
           build-args: |
-            VERSION:${{ env.caddy_version }}
+            VERSION=${{ env.caddy_version }}
 
       # - name: Build container image
       #   run:  source source.rc && docker build --build-arg VERSION=${CADDY_VERSION} -t steevi/caddy-cloudflare:${GITHUB_SHA} .
