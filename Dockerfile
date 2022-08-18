@@ -6,7 +6,8 @@ ARG VERSION
 FROM caddy:${VERSION}-builder-alpine AS builder
 ARG VERSION
 RUN xcaddy build v${VERSION} \
-  --with github.com/caddy-dns/cloudflare
+  --with github.com/caddy-dns/cloudflare \
+  --with github.com/corazawaf/coraza-caddy
 
 #########
 # image #
