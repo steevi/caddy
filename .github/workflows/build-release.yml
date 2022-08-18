@@ -32,6 +32,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: steevi/caddy-cloudflare:${{ env.caddy_version }}
+          tags: steevi/caddy-cloudflare:${{ env.caddy_version }}-waf
           build-args: |
             VERSION=${{ env.caddy_version }}
