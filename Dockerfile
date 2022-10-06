@@ -8,7 +8,7 @@
 
 ###########
 # builder #
-FROM golang:1.19-alpine as builder
+FROM golang:1.19.2-alpine as builder
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@v0.3.1
 RUN xcaddy build v2.6.1 \
@@ -17,5 +17,5 @@ RUN xcaddy build v2.6.1 \
 
 #########
 # image #
-FROM caddy:2.6.1-alpine
+FROM alpine:3
 COPY --from=builder /go/caddy /usr/bin/caddy
