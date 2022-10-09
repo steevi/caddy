@@ -27,14 +27,14 @@ jobs:
         with:
           push: false
           load: true # Export to Docker Engine rather than pushing to a registry
-          tags: steevi/caddy-cloudflare:${{ env.caddy_version }}
+          tags: steevi/caddy-cloudflare:${{ env.CADDY_VERSION }}
           build-args: |
-            CADDY_VERSION=${{ env.caddy_version }}
+            CADDY_VERSION=${{ env.CADDY_VERSION }}
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'steevi/caddy-cloudflare:${{ env.caddy_version }}'
+          image-ref: 'steevi/caddy-cloudflare:${{ env.CADDY_VERSION }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
 
