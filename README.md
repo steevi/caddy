@@ -1,4 +1,4 @@
-# caddy-cloudflare
+# caddy
 
 [Caddyserver](https://github.com/caddyserver/caddy/) with the following modules included:
 
